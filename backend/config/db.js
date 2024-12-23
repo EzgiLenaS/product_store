@@ -8,4 +8,8 @@ export const connectDB = async () => {
         console.error(`Error: ${error.message}`);
         process.exit(1); // process code 1 means exit with failure, 0 means success
     }
+    // Bağlandığınız veritabanı adını görmek için bu kısmı ekleyin
+    mongoose.connection.on('connected', () => {
+    console.log(`Connected to MongoDB database: ${mongoose.connection.db.databaseName}`);
+    });
 }
